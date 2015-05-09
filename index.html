@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="dhelp">
   <head>
     <meta charset="utf-8">
     <title>Dennis One - Help</title>
@@ -14,12 +14,16 @@
       <script src="js/vendor/html5shiv.js"></script>
       <script src="js/vendor/respond.min.js"></script>  
     <![endif]-->
+    <style>
+    .background1 {
+      min-height: 473px;
+      padding: 123px 199px 33px 306px;
+      background-color: rgb(26, 188, 156);
+    }
+    </style>
   </head>
   <body>
-    <div class="container">
-       
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+   <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -36,75 +40,30 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-
-    <div class="container theme-showcase" role="main"  style="margin-top:70px">
-    <div class="row">
-    <div class="col-sm-12">
-          <div class="todo">
-            <div class="todo-search">
-              <input class="todo-search-field" type="search" value="" placeholder="Search">
-            </div>
-            <ul>
-              <li class="">
-                <div class="todo-content">
-                  <h4 class="todo-name">
-                  Create Hellow World App
-                  </h4>
-                  
-                </div>
-              </li>
-              <li class="">
-                <div class="todo-content">
-                  <h4 class="todo-name">
-                   Custom Objects
-                  </h4>
-                  Skype conference an 9 am
-                </div>
-              </li>
-              <li class="">
-                <div class="todo-content">
-                  <h4 class="todo-name">
-                    Import/Export data
-                  </h4>
-                  1998 Broadway
-                </div>
-              </li>
-              <li class="">
-                <div class="todo-content">
-                  <h4 class="todo-name">
-                    API Console
-                  </h4>
-                  As soon as possible
-                </div>
-              </li>
-
-              <li class="">
-                <div class="todo-content">
-                  <h4 class="todo-name">
-                    Pre/Post Processor Scripts
-                  </h4>
-                  As soon as possible
-                </div>
-              </li>
-            </ul>
-          </div><!-- /.todo -->
-     
-        </div><!-- /.col-sm-4 -->
+  
+  <div  >
+    <div ng-view></div>
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted"> <strong>Copyright</strong> Dennis one © 2015.</p>
       </div>
-    </div>  
-
-    </div> <!-- /container -->
-
+    </footer>
 
     </div>
+   
+     
     <!-- /.container -->
-
   
     <!-- jQuery (necessary for Flat UI's JavaScript plugins) -->
     <script src="js/vendor/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/vendor/angular.js"></script>
+    <script src="js/vendor/angular-route.js"></script>
+     <script src="js/vendor/angular-resource.js"></script>
     <script src="js/vendor/video.js"></script>
     <script src="js/flat-ui.min.js"></script>
-
+    <script src="js/angular.min.js"></script>
+    <script src="scripts/main.js"></script>  
+    <script src="scripts/helpctrl.js"></script>
   </body>
 </html>
