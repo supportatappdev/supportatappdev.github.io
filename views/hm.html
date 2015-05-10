@@ -4,10 +4,10 @@
     <div class="col-sm-12">
           <div class="todo">
             <div class="todo-search">
-              <input class="todo-search-field" type="search" value="" placeholder="Search">
+              <input class="todo-search-field" type="search" ng-model="search" value="" placeholder="Search">
             </div>
             <ul>
-              <li ng-repeat = "topic in topics">
+              <li ng-repeat = "topic in topics | filter:search">
               <div class="todo-content">
                   <h4 class="todo-name">
                  <a ng-click="go(topic.link)"> {{topic.name}}</a>
