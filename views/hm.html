@@ -7,7 +7,17 @@
               <input class="todo-search-field" type="search" value="" placeholder="Search">
             </div>
             <ul>
-              <li class="">
+              <li ng-repeat = "topic in topics">
+              <div class="todo-content">
+                  <h4 class="todo-name">
+                 <a ng-click="go(topic.link)"> {{topic.name}}</a>
+                  </h4>
+                  
+                </div>
+          </span>
+            </li>
+            <ul>
+            <!--   <li class="">
                 <div class="todo-content">
                   <h4 class="todo-name">
                  <a ng-click="go('hw1')"> Create Hellow World App</a>
@@ -18,9 +28,8 @@
               <li class="">
                 <div class="todo-content">
                   <h4 class="todo-name">
-                   Custom Objects
+                    <a ng-click="go('aut')"> Applying UI Themes</a>
                   </h4>
-                  Skype conference an 9 am
                 </div>
               </li>
               <li class="">
@@ -71,7 +80,7 @@
                   </h4>
                   As soon as possible
                 </div>
-              </li>
+              </li> -->
             </ul>
           </div><!-- /.todo -->
      
