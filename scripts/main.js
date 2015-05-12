@@ -13,6 +13,8 @@ dhelp.config(['$routeProvider',
       }).when('/aut', {
         templateUrl: 'views/aut.html',
         controller: 'AutCtrl'
+      }).when('/co', {
+        templateUrl: 'views/co.html',
       })
   }]); 
 
@@ -21,7 +23,7 @@ dhelp.controller('DHelpCtrl',function($scope,$rootScope,$location){
   $scope.topics = [
                 {"idx":1,"name":"Create Hellow World App","link":"hw1"},
                 {"idx":2,"name":"Appying UI Themes","link":"aut"},
-                {"idx":3,"name":"Import/Export data","link":"ie"},
+                {"idx":3,"name":"Create Custom Objects","link":"co"},
                 {"idx":4,"name":"API Console","link":"ac"}
                ]
 
