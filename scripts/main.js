@@ -15,6 +15,8 @@ dhelp.config(['$routeProvider',
         controller: 'AutCtrl'
       }).when('/co', {
         templateUrl: 'views/co.html',
+      }).when('/rc', {
+        templateUrl: 'views/rc.html',
       })
   }]); 
 
@@ -24,7 +26,9 @@ dhelp.controller('DHelpCtrl',function($scope,$rootScope,$location){
                 {"idx":1,"name":"Create Hellow World App","link":"hw1"},
                 {"idx":2,"name":"Appying UI Themes","link":"aut"},
                 {"idx":3,"name":"Create Custom Objects","link":"co"},
-                {"idx":4,"name":"API Console","link":"ac"}
+                {"idx":4,"name":"REST Client API calls","link":"rc"},
+                {"idx":5,"name":"Change default Login and Index pages provided by the platform","link":"cdl"},
+                {"idx":6,"name":"Setup Roles and Users","link":"sru"}
                ]
 
 	$scope.go = function(path){

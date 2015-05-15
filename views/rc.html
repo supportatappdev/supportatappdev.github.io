@@ -1,0 +1,120 @@
+<style>
+.strng {
+	font-weight: bold;
+}
+</style>
+<div class="background1">
+	<ul class="breadcrumb">
+    <li><a href="#/">Home</a></li>
+    <li class="active">REST Client API calls</li>
+	</ul>
+	<div class="row ">
+	        <div class="col-lg-12">
+	        	1. Dennis Query API: Use the Dennis Query Language (DQL) to search your organization’s  data for specific information. DQL is similar to widely used Structured Query Language (SQL) but is designed specifically for getting/updating data from UI. We can get the data from ajax calls by using DQL. <br>
+	        	2. Similar to the SQL commands in Structured Query Language (SQL), DQL allows you to specify the
+				source object (custom object "Customers"), a list of fields to retrieve, and conditions for selecting rows in the source object.<br>
+				3. DQL for SELECT:
+<pre>var queryJSON = {
+		 "<span class="strng">ds</span>" : "Customers",
+		 "<span class="strng">wC</span>" : wC,
+		 "<span class="strng">wCParams</span>" : params,
+		 "<span class="strng">limit</span>": limit,
+		 "<span class="strng">offset</span>":offset,
+		 "<span class="strng">is_count</span>":isCount,
+		 "<span class="strng">oB</span>" : "creation_date desc"
+		};
+$.ajax({type : "POST",
+	    	<span class="strng">url</span> : '/api/data',
+	    	contentType:'application/json',
+	    	<span class="strng">data</span>:JSON.stringify(jsondata),
+	    	processData:false,
+	    	<span class="strng">success</span>: function(<span class="strng">result</span>) {
+			if (result.<span class="strng">$error</span>) {
+			 console.log(result.<span class="strng">errorMessage</span> +"-"+ result.<span class="strng">errorTitle</span>);
+			} else {
+			  console.log(result.<span class="strng">data</span>);
+			  if (result.<span class="strng">data</span>.length > 0) {
+				 .....
+			  } else {
+			   console.log("No Records found!!");
+			  }
+			}
+			},
+			failure: function(result){
+			 console.log("Failure*******"+result);
+			},dataType:'json'
+		})
+</pre>
+<pre>
+<ul>
+<li><span class="strng">‘data’</span> →  Pass the method name as ‘data’ to fetch the data from backend tables</li>
+<li>‘<span class="strng">ds</span>’ → Pass custom object name </li>
+<li>‘<span class="strng">limit</span>’,’<span class="strng">offset</span>’ → These two parameters are used to paginate the results. by default these  values set to 20,0. i.e it is always returns 20 rows even if you pass no where class</li>
+<li>‘<span class="strng">is_count</span>’ → One more parameter which is used for pagination,to get the total count it has  to be set to ‘Y’. Note that some times its a big performance issue when you are issuing count query on total set. Better always pass  ‘N’ to this parameter</li>
+<li>‘<span class="strng">wC</span>’,’<span class="strng">wCParams</span>’ → You can use these combination to refine the results 
+i.e '<span class="strng">wC</span>':'proj_id = ?','<span class="strng">wCParams</span>':[projId]</li> 
+<li>‘<span class="strng">OB</span>’ → Pass order by attribute name to get the ordered results
+i.e ‘<span class="strng">OB</span>’:’creation_date DESC’</li>
+<li><span class="strng">Callback function</span>
+ callback function will execute once the call is back from the server, and all the results from the server will be available in that function. $error will populate if there is any error at server/database level else data will populate. For more details please check the above example.
+</li>
+</ul>
+</pre>
+4.INSERT Query
+<pre>
+ var datajson = 
+ 	{'<span class="strng">ds</span>':'TaskRef',
+ 	 '<span class="strng">operation</span>':'INSERT',
+ 	 '<span class="strng">data</span>':
+		{'TASK_NAME':taskName,
+		 'status':status,
+		 'DESCRIPTION':desc,
+		 'PROJ_ID':projectId,
+		 'PRIORITY':priority,
+		 'START_DATE':startDate,
+		 'END_DATE':endDate
+	     }
+	};
+ datajson.data.isGenIds = "Y"; 
+$.ajax({type : "POST",
+	<span class="strng">url</span> : '/api/update',
+	contentType:'application/json',
+	data:JSON.stringify(jsondata),
+	success: function(result) {
+	}
+})	
+</pre>
+<pre>
+‘<span class="strng">update</span>’: Pass method name as update to perform insert/delete/update operation.
+'<span class="strng">operation</span>': Pass INSERT operation type to add an entry.
+‘<span class="strng">isGenIds</span>’: To get the generated Id’s back from the server. You can use these ID’s to update the child records.
+</pre>
+5. UPDATE/DELETE Query: For Update/Delete actions you have to pass primary key along with the operation type.
+<pre>
+<span class="strng">Update</span>
+var datajson = 
+	{
+	'<span class="strng">ds</span>':'TaskRef',
+	'<span class="strng">operation</span>':'UPDATE',
+	'<span class="strng">data</span>':
+	{
+	 ‘TASK_ID’: ID,
+	 'TASK_NAME':taskName,
+	 'DESCRIPTION':desc,
+	 'PROJ_ID':projectId,
+	 'PRIORITY':priority,
+	 'START_DATE':startDate,
+	 'END_DATE':endDate
+	 }
+	};
+
+<span class="strng">Delete</span>
+  var datajson = 
+  	{'ds':'TaskRef',
+  	 'operation':’DELETE’,
+  	 'data':{‘TASK_ID’: ID}
+	};
+</pre>
+	   </div>
+	</div>
+</div>
